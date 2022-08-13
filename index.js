@@ -2,76 +2,44 @@ const days = ["Sunday", "Monday", "Tuesday","Wednesday","Thursday","Friday","Sat
 
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-//setInterval(currentTime, 1000);
-function convertHours(hours) {
-  switch(hours) {
-    case 00:
-      return "00";
-    case 01:
-      return "01";
-    case 02:
-      return "02";
-    case 03:
-      return "03";
-    case 04:
-      return "04";
-    case 05:
-      return "05";
-    case 06:
-      return "06";
-    case 07:
-      return "07";
-    case 08:
-      return "08";
-    case 09:
-      return "09";
-    case 10:
-      return "10";
-    case 11:
-      return "11";
-    case 12:
-      return "12";
-    case 13:
-      return "01";
-    case 14:
-      return "02";
-    case 15:
-      return "03";
-    case 16:
-      return "04";
-    case 17:
-      return "05";
-    case 18:
-      return "06";
-    case 19:
-      return "07";
-    case 20:
-      return "08";
-    case 21:
-      return "09";
-    case 22:
-      return "10";
-    case 23:
-      return "11";
-    case 24:
-      return "12";
-  }
+function convertHours() {
+  let hours = Number(time[0]);
+  let minutes = Number(time[1]);
+  let seconds = Number(time[2]);
+
+if (hours > 0 && hours <= 12) {
+  timeValue= "" + hours;
+} else if (hours > 12) {
+  timeValue= "" + (hours - 12);
+} else if (hours == 0) {
+  timeValue= "12";
+}
 }
 
 function getCurrentTime() {
   let currentTime = new Date();
   let currentHour = currentTime.getHours();
+    if (currentHour < 10) {
+      currentHour = "0" + currentHour;
+    }
   let currentMinutes = currentTime.getMinutes();
+    if (currentMinutes < 10) {
+      currentMinutes = "0" + currentMinutes;
+    }
   let currentSeconds = currentTime.getSeconds();
+    if (currentSeconds < 10) {
+      currentSeconds = "0" + currentSeconds;
+    }
   let standardHours = convertHours(currentHour);
-  printCurrentTime(standardHours, currentMinutes, currentSeconds);
+
+  printCurrentTime(currentHour, currentMinutes, currentSeconds);
 }
 
 function printCurrentTime(currentHour, currentMinutes, currentSeconds) {
   let timeString = currentHour + ":" + currentMinutes + ":" + currentSeconds;
   let node = document.createTextNode(timeString);
   let element = document.getElementById("current-time");
-  element.appendChild(node);
+  element.textContent = timeString;
 }
 
 function getCurrentDate() {
@@ -91,11 +59,12 @@ function printCurrentDate(dayOfWeek, currentMonth, dayOfMonth, currentYear) {
 }
 
 const headerElement = document.getElementById("current-date");
-
 const headerText = headerElement.textContent;
 
-console.log("header-Text: ", headerText);
-console.log("Date Objects: ", );
-console.log("Day of The Week: ", days);
+setInterval(getCurrentTime, 1000);
+
+var time = new Date(); 
+let timeValue;
 
 getCurrentDate();
+getCurrentTime();
