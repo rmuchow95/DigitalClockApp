@@ -2,7 +2,7 @@
 
 _A simple Digital Clock App created entirely in Javascript and HTML_
 
-View it [here](https://github.com/rmuchow95/DigitalClockApp.git)
+View it [here](https://rmuchow95.github.io/DigitalClockApp/)
 
 ![Screenshot Rachels Digital Clock App](Images/DigitalClockScreenshot.png)
 
