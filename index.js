@@ -3,19 +3,16 @@ const days = ["Sunday", "Monday", "Tuesday","Wednesday","Thursday","Friday","Sat
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 function convertHours(hours) {
- // hours = Number(time[0]);
-
 if (hours > 0 && hours <= 12) {
   return "" + hours;
-} else if (hours > 12) {
+} else if (hours > 12 && hours < 22) {
   return "0" + (hours - 12);
 } else if (hours == 0) {
   return "12";
-} else if (hours < 22) {
+} else if (hours >= 22) {
   return "" + (hours - 12);
 }
 }
-
 function getCurrentTime() {
   let currentTime = new Date();
   let currentHour = currentTime.getHours();
@@ -30,9 +27,6 @@ function getCurrentTime() {
     if (currentSeconds < 10) {
       currentSeconds = "0" + currentSeconds;
     }
-
-  currentHour = convertHours(23);
-  console.log(currentHour)
 
   printCurrentTime(currentHour, currentMinutes, currentSeconds);
 }
@@ -64,9 +58,5 @@ const headerElement = document.getElementById("current-date");
 const headerText = headerElement.textContent;
 
 setInterval(getCurrentTime, 1000);
-
-var time = new Date(); 
-let timeValue;
-
 getCurrentDate();
 getCurrentTime();
