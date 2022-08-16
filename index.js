@@ -2,17 +2,17 @@ const days = ["Sunday", "Monday", "Tuesday","Wednesday","Thursday","Friday","Sat
 
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-function convertHours() {
-  let hours = Number(time[0]);
-  let minutes = Number(time[1]);
-  let seconds = Number(time[2]);
+function convertHours(hours) {
+ // hours = Number(time[0]);
 
 if (hours > 0 && hours <= 12) {
-  timeValue= "" + hours;
+  return "" + hours;
 } else if (hours > 12) {
-  timeValue= "" + (hours - 12);
+  return "0" + (hours - 12);
 } else if (hours == 0) {
-  timeValue= "12";
+  return "12";
+} else if (hours < 22) {
+  return "" + (hours - 12);
 }
 }
 
@@ -30,7 +30,9 @@ function getCurrentTime() {
     if (currentSeconds < 10) {
       currentSeconds = "0" + currentSeconds;
     }
-  let standardHours = convertHours(currentHour);
+
+  currentHour = convertHours(23);
+  console.log(currentHour)
 
   printCurrentTime(currentHour, currentMinutes, currentSeconds);
 }
